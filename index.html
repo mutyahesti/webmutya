@@ -1,182 +1,202 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tya Bakery</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tya Bakery</title>
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-    body {
-      background: #fff7f5;
-      font-family: 'DM Sans', sans-serif;
-      color: #5a5a5a;
-    }
+body{
+  background:#fff7f5;
+  font-family:'DM Sans',sans-serif;
+  color:#555;
+}
 
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
-    }
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  background:rgba(255,255,255,0.8);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
 
-    /* NAVBAR */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.8);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 15px;
-      z-index: 1000;
-    }
+.nav-kiri{display:flex;gap:20px;}
+nav a{text-decoration:none;color:#555;}
 
-    nav a {
-      text-decoration: none;
-      color: #5a5a5a;
-      font-weight: 500;
-    }
+.login{
+  background:#ffd6d6;
+  padding:6px 15px;
+  border-radius:20px;
+  transition:0.3s;
+}
 
-    /* HERO */
-    header {
-      height: 80vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      background: linear-gradient(to bottom, #ffffff, #fff7f5);
-    }
+.login:hover{
+  background:#ffafcc;
+}
 
-    header h1 {
-      font-size: 50px;
-    }
+/* HERO */
+header{
+  height:80vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
 
-    header p {
-      margin-top: 10px;
-      opacity: 0.7;
-    }
+header h1{
+  font-family:'Playfair Display',serif;
+  font-size:50px;
+}
 
-    /* MENU */
-    .menu {
-      padding: 80px 30px;
-      text-align: center;
-    }
+/* MENU */
+.menu{padding:80px 30px;text-align:center;}
 
-    .grid {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 20px;
-    }
+.grid{
+  margin-top:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
 
-    .card {
-      background: #fff;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      transition: 0.3s;
-      position: relative;
-    }
+.card{
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 0 10px rgba(255,200,200,0.3);
+  transition:0.3s;
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+  opacity:0;
+  transform:translateY(40px);
+  animation:muncul 1s forwards;
+}
 
-    .badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: #ffd6d6;
-      padding: 5px 10px;
-      border-radius: 10px;
-      font-size: 12px;
-    }
+.card:hover{
+  transform:translateY(-8px) scale(1.03);
+}
 
-    .card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
+@keyframes muncul{
+  to{opacity:1;transform:translateY(0);}
+}
 
-    .card-body {
-      padding: 15px;
-    }
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#ffd6d6;
+  padding:5px 10px;
+  border-radius:10px;
+  font-size:12px;
+}
 
-    .harga {
-      margin-top: 5px;
-      color: #b08968;
-      font-weight: 500;
-    }
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
 
-    /* BEST */
-    .best {
-      padding: 60px 30px;
-      background: #ffe5ec;
-      text-align: center;
-    }
+.card-body{padding:15px;}
 
-    .best-container {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-      overflow-x: auto;
-    }
+.harga{
+  color:#b08968;
+  margin-top:5px;
+}
 
-    .best-item {
-      min-width: 200px;
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-    }
+/* BUTTON */
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:8px 15px;
+  background:#ffcad4;
+  border-radius:20px;
+  text-decoration:none;
+  color:#444;
+  transition:0.3s;
+}
 
-    .best-item img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-    }
+.btn:hover{
+  background:#ffafcc;
+  transform:scale(1.05);
+}
 
-    /* TESTI */
-    .testimoni {
-      padding: 60px 30px;
-      text-align: center;
-    }
+/* TESTI */
+.testimoni{
+  padding:60px 30px;
+  text-align:center;
+}
 
-    .testi-box {
-      max-width: 600px;
-      margin: auto;
-      background: #fff;
-      border-radius: 20px;
-      padding: 25px;
-      color: #777;
-    }
+.testi-box{
+  max-width:600px;
+  margin:auto;
+  background:white;
+  padding:25px;
+  border-radius:20px;
+}
 
-    /* FOOTER */
-    footer {
-      background: #ffe5ec;
-      padding: 30px;
-      text-align: center;
-    }
-  </style>
+/* FOOTER */
+footer{
+  background:#ffe5ec;
+  text-align:center;
+  padding:30px;
+}
+
+/* BUNGA */
+.bunga span{
+  position:fixed;
+  top:-10px;
+  font-size:20px;
+  animation:jatuh 10s linear infinite;
+}
+
+.bunga span:nth-child(1){left:10%;}
+.bunga span:nth-child(2){left:30%;animation-delay:2s;}
+.bunga span:nth-child(3){left:50%;animation-delay:4s;}
+.bunga span:nth-child(4){left:70%;animation-delay:6s;}
+.bunga span:nth-child(5){left:90%;animation-delay:8s;}
+
+@keyframes jatuh{
+  0%{transform:translateY(-10px);opacity:1;}
+  100%{transform:translateY(100vh);opacity:0;}
+}
+</style>
 </head>
 
 <body>
 
+<!-- BUNGA -->
+<div class="bunga">
+<span>🌸</span><span>🌸</span><span>🌸</span><span>🌸</span><span>🌸</span>
+</div>
+
+<!-- NAV -->
 <nav>
-  <a href="#">Beranda</a>
-  <a href="#menu">Menu</a>
-  <a href="#">Tentang</a>
+  <div class="nav-kiri">
+    <a href="#">Beranda</a>
+    <a href="#menu">Menu</a>
+    <a href="#">Tentang</a>
+  </div>
+  <div>
+    <a href="login/index.html" class="login">Login</a>
+  </div>
 </nav>
 
+<!-- HERO -->
 <header>
   <h1>Tya Bakery 🍰</h1>
   <p>manisnya bikin bahagia 💖</p>
 </header>
 
+<!-- MENU -->
 <section id="menu" class="menu">
   <h2>Menu Kue</h2>
 
@@ -184,18 +204,20 @@
 
     <div class="card">
       <span class="badge">Favorit</span>
-      <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75">
+      <img src="https://images.unsplash.com/photo-1559628233-100c798642d4">
       <div class="card-body">
         <h3>Cheesecake Strawberry</h3>
         <p class="harga">Rp35.000</p>
+        <a href="https://wa.me/6281234567890" class="btn">Pesan</a>
       </div>
     </div>
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3">
+      <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c">
       <div class="card-body">
         <h3>Chocolate Cake</h3>
         <p class="harga">Rp30.000</p>
+        <a href="https://wa.me/6281234567890" class="btn">Pesan</a>
       </div>
     </div>
 
@@ -204,54 +226,35 @@
       <div class="card-body">
         <h3>Croissant Butter</h3>
         <p class="harga">Rp20.000</p>
+        <a href="https://wa.me/6281234567890" class="btn">Pesan</a>
       </div>
     </div>
 
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187">
+      <img src="https://images.unsplash.com/photo-1541782814459-77b53b5f75c3">
       <div class="card-body">
         <h3>Donat Glaze</h3>
         <p class="harga">Rp15.000</p>
+        <a href="https://wa.me/6281234567890" class="btn">Pesan</a>
       </div>
     </div>
 
   </div>
 </section>
 
-<section class="best">
-  <h2>Menu Terlaris</h2>
-  <a href="login/index.html" class="best">Login</a>
-
-  <div class="best-container">
-    <div class="best-item">
-      <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75">
-      <p>Cheesecake Strawberry</p>
-    </div>
-
-    <div class="best-item">
-      <img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3">
-      <p>Chocolate Cake</p>
-    </div>
-
-    <div class="best-item">
-      <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187">
-      <p>Donat Glaze</p>
-    </div>
-  </div>
-</section>
-
+<!-- TESTIMONI -->
 <section class="testimoni">
   <h2>Apa Kata Mereka?</h2>
   <div class="testi-box">
-    \"Kuenya lembut banget, tampilannya gemes!\" 😍
+    "Kuenya lembut banget, tampilannya gemes!" 😍
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <p>Tya Bakery 🍰</p>
-  <p style="font-size:14px; opacity:0.6;">fresh & sweet everyday</p>
+  <p style="font-size:14px;opacity:0.6;">fresh & sweet everyday</p>
 </footer>
 
 </body>
 </html>
-
