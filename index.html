@@ -1,7 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Corner</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+            scroll-behavior:smooth;
+        }
+
+        body{
+            background:#fff8f0;
+            color:#333;
+        }
+
+        header{
+            width:100%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:20px 10%;
+            background:#ff6b00;
+            position:fixed;
+            top:0;
+            left:0;
+            z-index:1000;
+        }
+
+        .logo{
+            color:white;
+            font-size:28px;
+            font-weight:bold;
+            text-decoration:none;
+        }
+
+        .navbar a{
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+            font-size:18px;
+        }
+
+        .navbar a:hover{
+            color:#ffe0c2;
+        }
+
+        .btn-login{
+            padding:10px 20px;
+            border:none;
+            background:white;
+            color:#ff6b00;
+            border-radius:5px;
+            cursor:pointer;
+            font-weight:bold;
+            margin-left:20px;
+        }
+
+        .home{
+            height:100vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            background:
+            linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+            url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1600&auto=format&fit=crop');
+            background-size:cover;
+            background-position:center;
+            color:white;
+            padding:20px;
+        }
+
+        .home .content h1{
+            font-size:60px;
+            margin-bottom:20px;
+        }
+
+        .home .content p{
+            font-size:20px;
+            margin-bottom:30px;
+        }
+
+        .btn{
+            padding:15px 30px;
+            background:#ff6b00;
+            color:white;
+            text-decoration:none;
+            border-radius:10px;
+            font-size:18px;
+        }
+
+        .menu{
+            padding:100px 10%;
+        }
+
+        .heading{
+            text-align:center;
+            font-size:40px;
+            margin-bottom:50px;
+            color:#ff6b00;
+        }
+
+        .box-container{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:30px;
+        }
+
+        .box{
+            background:white;
+            border-radius:15px;
+            overflow:hidden;
+            box-shadow:0 5px 15px rgba(0,0,0,0.1);
+            transition:0.3s;
+        }
+
+        .box:hover{
+            transform:translateY(-10px);
+        }
+
+        .box img{
+            width:100%;
+            height:220px;
+            object-fit:cover;
+        }
+
+        .box h3{
+            font-size:24px;
+            padding:15px;
+        }
+
+        .box p{
+            padding:0 15px 20px;
+        }
+
+        .about,
+        .contact{
+            padding:100px 10%;
+            text-align:center;
+        }
+
+        .about p,
+        .contact p{
+            margin-top:20px;
+            font-size:18px;
+        }
+
+        footer{
+            background:#ff6b00;
+            color:white;
+            text-align:center;
+            padding:20px;
+        }
+
+    </style>
+
+</head>
+
 <body>
 
     <!-- HEADER -->
-    <header class="header">
+    <header>
 
         <a href="#" class="logo">Food Corner</a>
 
@@ -10,13 +175,11 @@
             <a href="#menu">Menu</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
-        </nav>
 
-        <div id="authArea">
             <button onclick="goLogin()" class="btn-login">
                 Login
             </button>
-        </div>
+        </nav>
 
     </header>
 
@@ -48,31 +211,83 @@
         <div class="box-container">
 
             <div class="box">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop" alt="Burger">
+
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop">
 
                 <h3>Burger Special</h3>
 
                 <p>
                     Burger premium dengan saus spesial.
                 </p>
+
             </div>
 
             <div class="box">
-                <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?q=80&w=1000&auto=format&fit=crop" alt="Mie">
+
+                <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?q=80&w=1000&auto=format&fit=crop">
 
                 <h3>Mie Pedas</h3>
 
                 <p>
                     Mie pedas gurih dengan topping lengkap.
                 </p>
+
             </div>
 
             <div class="box">
-                <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?q=80&w=1000&auto=format&fit=crop" alt="Ayam">
+
+                <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?q=80&w=1000&auto=format&fit=crop">
 
                 <h3>Ayam Crispy</h3>
 
                 <p>
                     Ayam crispy renyah dan lezat.
                 </p>
+
             </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <h1 class="heading">Tentang Food Corner</h1>
+
+        <p>
+            Food Corner menyediakan berbagai makanan modern
+            dan tradisional dengan kualitas terbaik.
+        </p>
+
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <h1 class="heading">Kontak</h1>
+
+        <p>Email : foodcorner@gmail.com</p>
+
+        <p>Instagram : @foodcorner</p>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>© 2026 Food Corner | All Rights Reserved</p>
+
+    </footer>
+
+    <!-- LOGIN FUNCTION -->
+    <script>
+
+        function goLogin(){
+            window.location.href = "login/index.html";
+        }
+
+    </script>
+
+</body>
+            </html>
