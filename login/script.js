@@ -2,7 +2,7 @@
 class GradientWaveLoginForm {
     constructor() {
         this.form = document.getElementById('loginForm');
-        this.emailInput = document.getElementById('email');
+        this.usernameInput = document.getElementById('username'); // Menggunakan username ID
         this.passwordInput = document.getElementById('password');
         this.passwordToggle = document.getElementById('passwordToggle');
         this.submitButton = this.form.querySelector('.gradient-button');
@@ -22,27 +22,27 @@ class GradientWaveLoginForm {
     
     bindEvents() {
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-        this.emailInput.addEventListener('blur', () => this.validateEmail());
+        this.usernameInput.addEventListener('blur', () => this.validateUsername());
         this.passwordInput.addEventListener('blur', () => this.validatePassword());
-        this.emailInput.addEventListener('input', () => this.clearError('email'));
+        this.usernameInput.addEventListener('input', () => this.clearError('username'));
         this.passwordInput.addEventListener('input', () => this.clearError('password'));
         
         // Add wave effects to inputs
-        [this.emailInput, this.passwordInput].forEach(input => {
+        [this.usernameInput, this.passwordInput].forEach(input => {
             input.addEventListener('focus', (e) => this.triggerInputWave(e));
             input.addEventListener('blur', (e) => this.resetInputWave(e));
         });
     }
     
     setupPasswordToggle() {
-        this.passwordToggle.addEventListener('click', () => {
+        this.passwordToggle.addEventListener('click', (e) => {
             const type = this.passwordInput.type === 'password' ? 'text' : 'password';
             this.passwordInput.type = type;
             
             this.passwordToggle.classList.toggle('show-password', type === 'text');
+            this.passwordToggle.classList.toggle('visible', type === 'text');
             
-            // Add ripple effect to toggle
-            this.createRipple(event, this.passwordToggle);
+            this.createRipple(e, this.passwordToggle);
         });
     }
     
@@ -51,7 +51,6 @@ class GradientWaveLoginForm {
             button.addEventListener('click', (e) => {
                 this.createRipple(e, button);
                 
-                // Determine provider from button class or SVG
                 let provider = 'Social';
                 if (button.querySelector('.google-bg')) provider = 'Google';
                 else if (button.querySelector('.facebook-bg')) provider = 'Facebook';
@@ -63,27 +62,30 @@ class GradientWaveLoginForm {
     }
     
     setupWaveEffects() {
-        // Add interactive wave effects to card
         const card = document.querySelector('.login-card');
-        card.addEventListener('mousemove', (e) => {
-            this.updateCardWave(e, card);
-        });
-        
-        // Add floating animation to particles
+        if (card) {
+            card.addEventListener('mousemove', (e) => {
+                this.updateCardWave(e, card);
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        }
         this.animateParticles();
     }
     
     setupRippleEffects() {
-        // Add ripple to main button
         this.submitButton.addEventListener('click', (e) => {
-            this.createRipple(e, this.submitButton.querySelector('.button-ripple'));
+            const rippleContainer = this.submitButton.querySelector('.button-ripple') || this.submitButton;
+            this.createRipple(e, rippleContainer);
         });
         
-        // Add ripple to checkbox
         const checkbox = document.querySelector('.checkbox-container');
-        checkbox.addEventListener('click', (e) => {
-            this.createGradientRipple(e, checkbox);
-        });
+        if (checkbox) {
+            checkbox.addEventListener('click', (e) => {
+                this.createGradientRipple(e, checkbox);
+            });
+        }
     }
     
     updateCardWave(e, card) {
@@ -106,7 +108,6 @@ class GradientWaveLoginForm {
     animateParticles() {
         const particles = document.querySelectorAll('.particle');
         particles.forEach((particle, index) => {
-            // Add random movement
             setInterval(() => {
                 const randomX = Math.random() * 20 - 10;
                 const randomY = Math.random() * 20 - 10;
@@ -119,13 +120,12 @@ class GradientWaveLoginForm {
         const container = e.target.closest('.input-container');
         const wave = container.querySelector('.input-wave');
         
-        // Reset and trigger wave animation
-        wave.style.animation = 'none';
-        setTimeout(() => {
-            wave.style.animation = 'inputWaveFlow 1s ease-in-out';
-        }, 10);
-        
-        // Add glow effect
+        if (wave) {
+            wave.style.animation = 'none';
+            setTimeout(() => {
+                wave.style.animation = 'inputWaveFlow 1s ease-in-out';
+            }, 10);
+        }
         container.style.boxShadow = '0 0 30px rgba(255, 255, 255, 0.2)';
     }
     
@@ -160,7 +160,6 @@ class GradientWaveLoginForm {
             ripple.remove();
         }, 600);
         
-        // Add ripple animation if not exists
         if (!document.querySelector('#ripple-keyframes')) {
             const style = document.createElement('style');
             style.id = 'ripple-keyframes';
@@ -204,7 +203,6 @@ class GradientWaveLoginForm {
             ripple.remove();
         }, 800);
         
-        // Add gradient ripple animation
         if (!document.querySelector('#gradient-ripple-keyframes')) {
             const style = document.createElement('style');
             style.id = 'gradient-ripple-keyframes';
@@ -220,21 +218,15 @@ class GradientWaveLoginForm {
         }
     }
     
-    validateEmail() {
-        const email = this.emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    validateUsername() {
+        const username = this.usernameInput.value.trim();
         
-        if (!email) {
-            this.showError('email', 'Email address is required');
+        if (!username) {
+            this.showError('username', 'Username is required');
             return false;
         }
         
-        if (!emailRegex.test(email)) {
-            this.showError('email', 'Please enter a valid email address');
-            return false;
-        }
-        
-        this.clearError('email');
+        this.clearError('username');
         return true;
     }
     
@@ -256,26 +248,30 @@ class GradientWaveLoginForm {
     }
     
     showError(field, message) {
-        const formGroup = document.getElementById(field).closest('.form-group');
+        const inputField = document.getElementById(field);
+        if (!inputField) return;
+
+        const formGroup = inputField.closest('.form-group');
         const errorElement = document.getElementById(`${field}Error`);
         
         formGroup.classList.add('error');
         errorElement.textContent = message;
         errorElement.classList.add('show');
         
-        // Add wave shake animation
         const inputContainer = formGroup.querySelector('.input-container');
         inputContainer.style.animation = 'waveShake 0.5s ease-in-out';
         setTimeout(() => {
             inputContainer.style.animation = '';
         }, 500);
         
-        // Create error wave effect
         this.createErrorWave(inputContainer);
     }
     
     clearError(field) {
-        const formGroup = document.getElementById(field).closest('.form-group');
+        const inputField = document.getElementById(field);
+        if (!inputField) return;
+
+        const formGroup = inputField.closest('.form-group');
         const errorElement = document.getElementById(`${field}Error`);
         
         formGroup.classList.remove('error');
@@ -307,7 +303,6 @@ class GradientWaveLoginForm {
             wave.remove();
         }, 800);
         
-        // Add error wave animation
         if (!document.querySelector('#error-wave-keyframes')) {
             const style = document.createElement('style');
             style.id = 'error-wave-keyframes';
@@ -330,11 +325,10 @@ class GradientWaveLoginForm {
     async handleSubmit(e) {
         e.preventDefault();
         
-        const isEmailValid = this.validateEmail();
+        const isUsernameValid = this.validateUsername();
         const isPasswordValid = this.validatePassword();
         
-        if (!isEmailValid || !isPasswordValid) {
-            // Add button shake effect
+        if (!isUsernameValid || !isPasswordValid) {
             this.submitButton.style.animation = 'waveShake 0.5s ease-in-out';
             setTimeout(() => {
                 this.submitButton.style.animation = '';
@@ -344,23 +338,35 @@ class GradientWaveLoginForm {
         
         this.setLoading(true);
         
+        const inputUsername = this.usernameInput.value.trim();
+        const inputPassword = this.passwordInput.value;
+
+        // AKUN LOGIN CONTOH (Ganti bebas sesukamu di sini)
+        const usernameBenar = "mutya";
+        const passwordBenar = "admin1234.com";
+        
         try {
-            // Simulate gradient wave authentication
-            await new Promise(resolve => setTimeout(resolve, 2500));
+            await new Promise(resolve => setTimeout(resolve, 2000));
             
-            // Show wave success
-            this.showWaveSuccess();
+            if (inputUsername === usernameBenar && inputPassword === passwordBenar) {
+                this.showWaveSuccess();
+            } else {
+                this.setLoading(false);
+                if (inputUsername !== usernameBenar) {
+                    this.showError('username', 'Username is not registered.');
+                } else {
+                    this.showError('password', 'Incorrect password. Please try again.');
+                }
+            }
         } catch (error) {
-            this.showError('password', 'Authentication failed. Please try again.');
-        } finally {
             this.setLoading(false);
+            this.showError('password', 'Authentication failed. Please try again.');
         }
     }
     
     async handleSocialLogin(provider, button) {
         console.log(`Initiating ${provider} authentication...`);
         
-        // Add loading wave effect
         const wave = document.createElement('div');
         wave.style.cssText = `
             position: absolute;
@@ -380,8 +386,7 @@ class GradientWaveLoginForm {
         
         try {
             await new Promise(resolve => setTimeout(resolve, 1500));
-            console.log(`Redirecting to ${provider} authentication...`);
-            // window.location.href = `/auth/${provider.toLowerCase()}`;
+            this.showWaveSuccess();
         } catch (error) {
             console.error(`${provider} authentication failed: ${error.message}`);
         } finally {
@@ -389,7 +394,6 @@ class GradientWaveLoginForm {
             button.style.pointerEvents = 'auto';
         }
         
-        // Add social wave animation
         if (!document.querySelector('#social-wave-keyframes')) {
             const style = document.createElement('style');
             style.id = 'social-wave-keyframes';
@@ -407,7 +411,6 @@ class GradientWaveLoginForm {
         this.submitButton.classList.toggle('loading', loading);
         this.submitButton.disabled = loading;
         
-        // Disable social buttons with wave effect
         this.socialButtons.forEach(button => {
             button.style.pointerEvents = loading ? 'none' : 'auto';
             button.style.opacity = loading ? '0.6' : '1';
@@ -415,7 +418,6 @@ class GradientWaveLoginForm {
     }
     
     showWaveSuccess() {
-        // Add success wave to entire form
         const card = document.querySelector('.login-card');
         const successWave = document.createElement('div');
         successWave.style.cssText = `
@@ -434,32 +436,37 @@ class GradientWaveLoginForm {
         card.style.position = 'relative';
         card.appendChild(successWave);
         
-        // Fade out form
         this.form.style.transform = 'scale(0.95)';
         this.form.style.opacity = '0';
         
+        const socialLogin = document.querySelector('.social-login');
+        const signupLink = document.querySelector('.signup-link');
+        const divider = document.querySelector('.divider');
+        
         setTimeout(() => {
             this.form.style.display = 'none';
-            document.querySelector('.social-login').style.display = 'none';
-            document.querySelector('.signup-link').style.display = 'none';
+            if(socialLogin) socialLogin.style.display = 'none';
+            if(signupLink) signupLink.style.display = 'none';
+            if(divider) divider.style.display = 'none';
             
-            // Show success with wave animation
+            this.successMessage.style.display = 'block';
+            this.successMessage.style.opacity = '1';
             this.successMessage.classList.add('show');
+            this.successMessage.classList.add('active');
             
-            // Trigger success wave
             const successMessageWave = this.successMessage.querySelector('.success-wave');
-            successMessageWave.style.animation = 'successWaveMove 2s ease-in-out';
+            if (successMessageWave) {
+                successMessageWave.style.animation = 'successWaveMove 2s ease-in-out';
+            }
             
         }, 300);
         
-        // Clean up and redirect
         setTimeout(() => {
             successWave.remove();
-            console.log('Redirecting to dashboard...');
-            // window.location.href = '/dashboard';
-        }, 3000);
+            // Akan otomatis mengarah ke file index.html utama di luar folder login
+            window.location.href = "../index.html"; 
+        }, 2500);
         
-        // Add success wave animation
         if (!document.querySelector('#success-wave-keyframes')) {
             const style = document.createElement('style');
             style.id = 'success-wave-keyframes';
@@ -478,3 +485,4 @@ class GradientWaveLoginForm {
 document.addEventListener('DOMContentLoaded', () => {
     new GradientWaveLoginForm();
 });
+                                                                           
