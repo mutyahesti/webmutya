@@ -2,7 +2,7 @@
 class GradientWaveLoginForm {
     constructor() {
         this.form = document.getElementById('loginForm');
-        this.usernameInput = document.getElementById('username'); // Menggunakan username ID
+        this.usernameInput = document.getElementById('username');
         this.passwordInput = document.getElementById('password');
         this.passwordToggle = document.getElementById('passwordToggle');
         this.submitButton = this.form.querySelector('.gradient-button');
@@ -328,6 +328,7 @@ class GradientWaveLoginForm {
         const isUsernameValid = this.validateUsername();
         const isPasswordValid = this.validatePassword();
         
+        // Tetap ada validasi dasar agar form tidak dikosongkan/kurang dari 6 karakter
         if (!isUsernameValid || !isPasswordValid) {
             this.submitButton.style.animation = 'waveShake 0.5s ease-in-out';
             setTimeout(() => {
@@ -338,26 +339,13 @@ class GradientWaveLoginForm {
         
         this.setLoading(true);
         
-        const inputUsername = this.usernameInput.value.trim();
-        const inputPassword = this.passwordInput.value;
-
-        // AKUN LOGIN CONTOH (Ganti bebas sesukamu di sini)
-        const usernameBenar = "mutya";
-        const passwordBenar = "admin1234.com";
-        
         try {
+            // Animasi loading tombol selama 2 detik
             await new Promise(resolve => setTimeout(resolve, 2000));
             
-            if (inputUsername === usernameBenar && inputPassword === passwordBenar) {
-                this.showWaveSuccess();
-            } else {
-                this.setLoading(false);
-                if (inputUsername !== usernameBenar) {
-                    this.showError('username', 'Username is not registered.');
-                } else {
-                    this.showError('password', 'Incorrect password. Please try again.');
-                }
-            }
+            // PERBAIKAN PRAKTIS: Langsung sukses tanpa cek kecocokan kata sandi tertentu!
+            this.showWaveSuccess();
+            
         } catch (error) {
             this.setLoading(false);
             this.showError('password', 'Authentication failed. Please try again.');
@@ -463,7 +451,6 @@ class GradientWaveLoginForm {
         
         setTimeout(() => {
             successWave.remove();
-            // Akan otomatis mengarah ke file index.html utama di luar folder login
             window.location.href = "../index.html"; 
         }, 2500);
         
@@ -485,4 +472,4 @@ class GradientWaveLoginForm {
 document.addEventListener('DOMContentLoaded', () => {
     new GradientWaveLoginForm();
 });
-                                                                           
+        
