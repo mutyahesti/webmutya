@@ -39,7 +39,7 @@
 		<main>
 			<header class="row tm-welcome-section">
 				<h2 class="col-12 text-center tm-section-title">Selamat Datang di Griya Kuliner</h2>
-				<p class="col-12 text-center">Kami menyajikan aneka hidangan lezat dengan bahan-bahan segar berkualitas tinggi. Temukan berbagai pilihan menu favorit Anda mulai dari hidangan utama yang menggugah selera, pilihan salad segar, hingga mi khas racikan dapur kami.</p>
+				<p class="col-12 text-center">Kami menyajikan aneka hidangan lezat dengan bahan-bahan segar berkualitas tinggi. Temukan berbagai pilihan menu favorit Anda mulai dari hidangan utama yang menggugah selera, pilihan salad segar, hingga aneka sajian pelengkap khas dapur kami.</p>
 			</header>
 			
 			<!-- Bagian Tombol Filter Menu -->
@@ -48,7 +48,8 @@
 					<ul>
 						<li class="tm-paging-item"><a href="#" class="tm-paging-link active" data-page="pizza">Pizza</a></li>
 						<li class="tm-paging-item"><a href="#" class="tm-paging-link" data-page="salad">Salad</a></li>
-						<li class="tm-paging-item"><a href="#" class="tm-paging-link" data-page="noodle">Mi</a></li>
+						<!-- PERBAIKAN: Nama tombol diubah agar cocok dengan isi menunya -->
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link" data-page="noodle">Sajian Lain</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -118,7 +119,7 @@
 					</div>
 				</div>
 
-				<!-- KATEGORI 3: MI & LAINNYA -->
+				<!-- KATEGORI 3: SAJIAN LAIN -->
 				<div id="tm-gallery-page-noodle" class="tm-gallery-page col-12" style="display: none;">
 					<div class="row">
 						<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
@@ -190,7 +191,7 @@
 				
 				var page = $(this).data('page');
 				
-				// Sembunyikan semua halaman galeri dengan menyetel display ke none
+				// Sembunyikan semua halaman galeri
 				$('.tm-gallery-page').css('display', 'none');
 				// Tampilkan halaman galeri yang dipilih
 				$('#tm-gallery-page-' + page).css('display', 'block');
@@ -202,4 +203,3 @@
 	</script>
 </body>
 </html>
-	
