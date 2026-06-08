@@ -20,7 +20,6 @@
 						<div class="col-md-6 col-12">
 							<img src="img/simple-house-logo.png" alt="Logo" class="tm-site-logo" /> 
 							<div class="tm-site-text-box">
-								<!-- PERBAIKAN: Nama diganti ke Griya Kuliner -->
 								<h1 class="tm-site-title">Griya Kuliner</h1>
 								<h6 class="tm-site-description">Cita Rasa Kuliner Istimewa</h6>	
 							</div>
@@ -43,32 +42,22 @@
 				<p class="col-12 text-center">Kami menyajikan aneka hidangan lezat dengan bahan-bahan segar berkualitas tinggi. Temukan berbagai pilihan menu favorit Anda mulai dari hidangan utama yang menggugah selera, pilihan salad segar, hingga mi khas racikan dapur kami.</p>
 			</header>
 			
-			<!-- Bagian Filter Menu -->
+			<!-- Bagian Tombol Filter Menu -->
 			<div class="tm-paging-links">
 				<nav>
 					<ul>
-						<li class="tm-paging-item"><a href="#" class="tm-paging-link active">Pizza</a></li>
-						<li class="tm-paging-item"><a href="#" class="tm-paging-link">Salad</a></li>
-						<li class="tm-paging-item"><a href="#" class="tm-paging-link">Mi</a></li>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link active" data-page="pizza">Pizza</a></li>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link" data-page="salad">Salad</a></li>
+						<li class="tm-paging-item"><a href="#" class="tm-paging-link" data-page="noodle">Mi</a></li>
 					</ul>
 				</nav>
 			</div>
 
-			<!-- Daftar Menu (Gallery) -->
+			<!-- Galeri Menu -->
 			<div class="row tm-gallery">
-				<!-- Menu 1 -->
+				
+				<!-- KATEGORI 1: PIZZA -->
 				<div id="tm-gallery-page-pizza" class="tm-gallery-page">
-					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
-						<figure>
-							<img src="img/gallery/01.jpg" alt="Image" class="img-fluid tm-gallery-img" />
-							<figcaption>
-								<h4 class="tm-gallery-title">Pizza Spesial</h4>
-								<p class="tm-gallery-description">Perpaduan keju mozzarella meleleh dengan saus tomat segar khas dapur kami.</p>
-								<p class="tm-gallery-price">Rp 45.000</p>
-							</figcaption>
-						</figure>
-					</article>
-					<!-- Menu 2 -->
 					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
 						<figure>
 							<img src="img/gallery/02.jpg" alt="Image" class="img-fluid tm-gallery-img" />
@@ -79,76 +68,89 @@
 							</figcaption>
 						</figure>
 					</article>
-					<!-- Menu 3 -->
 					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
 						<figure>
 							<img src="img/gallery/03.jpg" alt="Image" class="img-fluid tm-gallery-img" />
 							<figcaption>
-								<h4 class="tm-gallery-title">Pizza Jamur</h4>
+								<h4 class="tm-gallery-title">Pizza Jamur Crispy</h4>
 								<p class="tm-gallery-description">Potongan jamur segar melimpah dengan taburan rempah pilihan.</p>
 								<p class="tm-gallery-price">Rp 40.000</p>
 							</figcaption>
 						</figure>
 					</article>
-					<!-- Menu 4 -->
+				</div> <!-- Akhir Kategori Pizza -->
+
+				<!-- KATEGORI 2: SALAD -->
+				<div id="tm-gallery-page-salad" class="tm-gallery-page tm-hide">
 					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
 						<figure>
-							<img src="img/gallery/04.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<img src="img/gallery/01.jpg" alt="Image" class="img-fluid tm-gallery-img" />
 							<figcaption>
-								<h4 class="tm-gallery-title">Pizza Sosis Olahan</h4>
-								<p class="tm-gallery-description">Topping sosis sapi premium yang gurih dan memanjakan lidah.</p>
-								<p class="tm-gallery-price">Rp 48.000</p>
+								<h4 class="tm-gallery-title">Salad Alpukat Segar</h4>
+								<p class="tm-gallery-description">Sayuran organik renyah dipadukan dengan potongan alpukat mentega dan tomat ceri.</p>
+								<p class="tm-gallery-price">Rp 35.000</p>
 							</figcaption>
 						</figure>
 					</article>
-					<!-- Menu 5 -->
 					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
 						<figure>
 							<img src="img/gallery/05.jpg" alt="Image" class="img-fluid tm-gallery-img" />
 							<figcaption>
-								<h4 class="tm-gallery-title">Pizza Sayur Segar</h4>
-								<p class="tm-gallery-description">Pilihan sehat dengan kombinasi sayuran segar nan renyah.</p>
-								<p class="tm-gallery-price">Rp 38.000</p>
+								<h4 class="tm-gallery-title">Salad Sayur Berwarna</h4>
+								<p class="tm-gallery-description">Pilihan super sehat dengan kombinasi sayuran segar kaya serat dan saus wijen sangrai.</p>
+								<p class="tm-gallery-price">Rp 32.000</p>
 							</figcaption>
 						</figure>
 					</article>
-					<!-- Menu 6 -->
-					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
-						<figure>
-							<img src="img/gallery/06.jpg" alt="Image" class="img-fluid tm-gallery-img" />
-							<figcaption>
-								<h4 class="tm-gallery-title">Pizza Ayam BBQ</h4>
-								<p class="tm-gallery-description">Potongan daging ayam panggang berbalut saus BBQ yang manis gurih.</p>
-								<p class="tm-gallery-price">Rp 52.000</p>
-							</figcaption>
-						</figure>
-					</article>
-					<!-- Menu 7 -->
 					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
 						<figure>
 							<img src="img/gallery/07.jpg" alt="Image" class="img-fluid tm-gallery-img" />
 							<figcaption>
-								<h4 class="tm-gallery-title">Pizza Pedas Manis</h4>
-								<p class="tm-gallery-description">Sensasi unik rasa pedas berpadu dengan kelezatan bumbu rahasia.</p>
-								<p class="tm-gallery-price">Rp 45.000</p>
+								<h4 class="tm-gallery-title">Salad Istimewa</h4>
+								<p class="tm-gallery-description">Campuran sayur segar dengan taburan keju feta dan minyak zaitun murni.</p>
+								<p class="tm-gallery-price">Rp 38.000</p>
 							</figcaption>
 						</figure>
 					</article>
-					<!-- Menu 8 -->
+				</div> <!-- Akhir Kategori Salad -->
+
+				<!-- KATEGORI 3: MI & LAINNYA -->
+				<div id="tm-gallery-page-noodle" class="tm-gallery-page tm-hide">
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/04.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Pasta Mi Spesial</h4>
+								<p class="tm-gallery-description">Mi bertekstur lembut dibalut bumbu gurih dan irisan daun herba segar.</p>
+								<p class="tm-gallery-price">Rp 42.000</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="img/gallery/06.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Roti Panggang Madu</h4>
+								<p class="tm-gallery-description">Roti bakar lembut dengan limpahan buah beri segar dan siraman madu asli.</p>
+								<p class="tm-gallery-price">Rp 28.000</p>
+							</figcaption>
+						</figure>
+					</article>
 					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
 						<figure>
 							<img src="img/gallery/08.jpg" alt="Image" class="img-fluid tm-gallery-img" />
 							<figcaption>
-								<h4 class="tm-gallery-title">Pizza Campur Spesial</h4>
-								<p class="tm-gallery-description">Paket lengkap semua topping terbaik dalam satu loyang pizza.</p>
-								<p class="tm-gallery-price">Rp 55.000</p>
+								<h4 class="tm-gallery-title">Pangsit Kukus Daging</h4>
+								<p class="tm-gallery-description">Pangsit kukus isi daging cincang tebal yang disajikan hangat dengan sumpit.</p>
+								<p class="tm-gallery-price">Rp 30.000</p>
 							</figcaption>
 						</figure>
 					</article>
-				</div>
+				</div> <!-- Akhir Kategori Mi -->
+
 			</div>
 			
-			<!-- Bagian Banner Bawah -->
+			<!-- Banner Info Bawah -->
 			<div class="tm-section tm-container-inner">
 				<div class="row">
 					<div class="col-md-6">
@@ -168,9 +170,7 @@
 			</div>
 		</main>
 
-		<!-- Footer -->
 		<footer class="tm-footer text-center">
-			<!-- PERBAIKAN: Tahun footer diubah ke 2026 -->
 			<p>Copyright &copy; 2026 Griya Kuliner | Dikembangkan dengan Sepenuh Hati</p>
 		</footer>
 	</div>
@@ -179,9 +179,15 @@
 	<script src="js/parallax.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			// Pengaturan navigasi halaman galeri sederhana
+			// Logika filter menu agar tombol Pizza, Salad, dan Mi berfungsi penuh
 			$('.tm-paging-link').click(function(e){
 				e.preventDefault();
+				
+				var page = $(this).data('page');
+				
+				$('.tm-gallery-page').addClass('tm-hide');
+				$('#tm-gallery-page-' + page).removeClass('tm-hide');
+				
 				$('.tm-paging-link').removeClass('active');
 				$(this).addClass('active');
 			});
@@ -189,4 +195,3 @@
 	</script>
 </body>
 </html>
-									
